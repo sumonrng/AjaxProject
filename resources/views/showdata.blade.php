@@ -31,22 +31,26 @@
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Mobile</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Country</th>
                     <th scope="col">Show</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($members as $member)
+                  @foreach ($member as $show)
                   <tr>
-                    <th scope="row">{{$member->id}}</th>
-                    <td>{{$member->name}}</td>
-                    <td>{{$member->email}}</td>
-                    <td>{{$member->mobile}}</td>
-                    <td><a href="{{route('members.show',$member->id)}}" class="btn btn-info">Show</a></td>
-                    <td><a href="{{route('members.edit',$member->id)}}" class="btn btn-primary">Update</a></td>
+                    <th scope="row">{{$show->id}}</th>
+                    <td>{{$show->name}}</td>
+                    <td>{{$show->email}}</td>
+                    <td>{{$show->mobile}}</td>
+                    <td>{{$show->city}}</td>
+                    <td>{{$show->country}}</td>
+                    <td><a href="{{route('members.show',$show->id)}}" class="btn btn-info">Show</a></td>
+                    <td><a href="{{route('members.edit',$show->id)}}" class="btn btn-primary">Update</a></td>
                     <td>
-                      <form action="{{route('members.destroy',$member->id)}}" method="POST">
+                      <form action="{{route('members.destroy',$show->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Delete</button>

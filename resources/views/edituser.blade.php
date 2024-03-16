@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>Edit Member</title>
     <!-- Required meta tags -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('content')
@@ -19,33 +19,35 @@
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-8 col-sm-9">
               {{-- <form id="formData"> --}}
-              <form action="{{route('members.store')}}" method="POST">
+              <form action="{{route('members.update',$member->id)}}" method="POST">
               @csrf
+              @method('PUT')
+                    {{-- <input type="hidden" value="{{$member->id}}" name="id"> --}}
                     <div class="form-group">
                     <label for="f_name">Name</label>
-                    <input type="text" class="form-control" id="f_name" name="f_name" aria-describedby="emailHelp" placeholder="Enter name">
+                    <input type="text" class="form-control" value="{{$member->name}}" id="f_name" name="f_name" aria-describedby="emailHelp" placeholder="Enter name">
                     </div>
                     <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <input type="email" class="form-control" value="{{$member->email}}" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
                     <div class="form-group">
                         <label for="mobile">Mobile</label>
-                        <input type="number" class="form-control" id="mobile" name="mobile" aria-describedby="emailHelp" placeholder="Enter Mobile">
+                        <input type="number" class="form-control" value="{{$member->mobile}}" id="mobile" name="mobile" aria-describedby="emailHelp" placeholder="Enter Mobile">
                     </div>
                     <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" name="city" aria-describedby="emailHelp" placeholder="Enter City">
+                        <input type="text" class="form-control" value="{{$member->city}}" id="city" name="city" aria-describedby="emailHelp" placeholder="Enter City">
                     </div>
                     <div class="form-group">
                         <label for="country">Country</label>
-                        <input type="text" class="form-control" id="country" name="country" aria-describedby="emailHelp" placeholder="Enter Mobile">
+                        <input type="text" class="form-control" value="{{$member->country}}" id="country" name="country" aria-describedby="emailHelp" placeholder="Enter Mobile">
                     </div>
                     <div class="form-group">
                     <label for="password">Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </form>
             </div>
         </div>
