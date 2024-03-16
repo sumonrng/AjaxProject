@@ -51,12 +51,18 @@
     <script type="text/javascript">
       
       // $(document).ready(function(){
+      //   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+      //   var objectResult = $('#formData').serializeArray();
       //     $('#formData').submit(function(e){
       //       e.preventDefault();
+      //       alert('Hello');
       //       $.ajax({
       //         url:'store',
       //         type:'POST',
-      //         data:$('#formData').serialize(),
+      //         data:{
+      //          _token: CSRF_TOKEN,
+      //          fields: objectResult
+      //         },
       //         success:function(res){
       //           console.log(res);
       //         }
