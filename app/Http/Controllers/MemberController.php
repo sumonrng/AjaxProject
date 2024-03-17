@@ -56,9 +56,12 @@ class MemberController extends Controller
             ["email"=> $request->email],
             [
             "name"=> $request->f_name,
+            "age"=> $request->age,
             "email"=> $request->email,
             "mobile"=> $request->mobile,
-            "password"=> $request->password,
+            "city"=> $request->city,
+            "country"=> $request->country,
+            "password"=> md5($request->password),
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now()
             ]
@@ -91,10 +94,20 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        Member::where('id', $member->id)
-                ->lazyById(2)
-                ->each->update(['email'=>$request->email,'mobile'=>(int) $request->mobile,'city'=> (string) $request->city,'country'=> (string) $request->country]);
+        Member::where('id',$request->id)->update([
+            'name'=> (string) $request->f_name,
+            'age'=> (int) $request->age,
+            'email'=> $request->email,
+            'mobile'=> $request->mobile,
+            'city'=> (string) $request->city,
+            'country'=> (string) $request->country,
+            'password'=> md5($request->password)
+            ]);
         return redirect()->route('members.index')->with('success','Successfully Updated.');
+        // Member::where('id', $member->id)
+        //         ->lazyById(2)
+        //         ->each->update(['email'=>$request->email,'mobile'=>(int) $request->mobile,'city'=> (string) $request->city,'country'=> (string) $request->country]);
+        // return redirect()->route('members.index')->with('success','Successfully Updated.');
         // Member::where('id', $member->id)
         //         ->chunkById(2, function ($member) 
         //         use ($request) {

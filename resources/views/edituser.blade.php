@@ -22,11 +22,15 @@
               <form action="{{route('members.update',$member->id)}}" method="POST">
               @csrf
               @method('PUT')
-                    {{-- <input type="hidden" value="{{$member->id}}" name="id"> --}}
+                    <input type="hidden" value="{{$member->id}}" name="id">
                     <div class="form-group">
                     <label for="f_name">Name</label>
                     <input type="text" class="form-control" value="{{$member->name}}" id="f_name" name="f_name" aria-describedby="emailHelp" placeholder="Enter name">
                     </div>
+                    <div class="form-group">
+                      <label for="age">Age</label>
+                      <input type="number" class="form-control" value="{{$member->age}}" id="age" name="age" aria-describedby="emailHelp" placeholder="Enter Age">
+                      </div>
                     <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" value="{{$member->email}}" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">

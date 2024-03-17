@@ -29,6 +29,7 @@
                   <tr>
                     <th scope="col">Serial</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Age</th>
                     <th scope="col">Email</th>
                     <th scope="col">Mobile</th>
                     <th scope="col">City</th>
@@ -39,10 +40,12 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @if(count($member) > 0)
                   @foreach ($member as $show)
                   <tr>
                     <th scope="row">{{$show->id}}</th>
                     <td>{{$show->name}}</td>
+                    <td>{{$show->age}}</td>
                     <td>{{$show->email}}</td>
                     <td>{{$show->mobile}}</td>
                     <td>{{$show->city}}</td>
@@ -58,6 +61,11 @@
                     </td>
                   </tr>
                   @endforeach
+                  @else
+                    <tr>
+                      <td colspan="12" class="text-center">No Data Found!</td>
+                    </tr>
+                  @endif
                 </tbody>
               </table>
             </div>

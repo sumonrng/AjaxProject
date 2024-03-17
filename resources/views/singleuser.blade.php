@@ -29,8 +29,11 @@
                   <tr>
                     <th scope="col">Serial</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Age</th>
                     <th scope="col">Email</th>
                     <th scope="col">Mobile</th>
+                    <th scope="col">City</th>
+                    <th scope="col">Country</th>
                     <th scope="col">Show</th>
                     <th scope="col">Update</th>
                     <th scope="col">Delete</th>
@@ -41,8 +44,11 @@
                   <tr>
                     <th scope="row">{{$member->id}}</th>
                     <td>{{$member->name}}</td>
+                    <td>{{$member->age}}</td>
                     <td>{{$member->email}}</td>
                     <td>{{$member->mobile}}</td>
+                    <td>{{$member->city}}</td>
+                    <td>{{$member->country}}</td>
                     <td><a href="{{route('members.show',$member->id)}}" class="btn btn-info">Show</a></td>
                     <td><a href="{{route('members.edit',$member->id)}}" class="btn btn-primary">Update</a></td>
                     <td><a href="{{route('members.destroy',$member->id)}}" class="btn btn-danger">Delete</a></td>

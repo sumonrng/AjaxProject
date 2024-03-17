@@ -26,6 +26,10 @@
                     <input type="text" class="form-control" id="f_name" name="f_name" aria-describedby="emailHelp" placeholder="Enter name">
                     </div>
                     <div class="form-group">
+                      <label for="age">Age</label>
+                      <input type="number" class="form-control" id="age" name="age" aria-describedby="emailHelp" placeholder="Enter Age">
+                      </div>
+                    <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
                     </div>
