@@ -52,8 +52,8 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        Member::firstOrCreate(
-            ["email"=> $request->email],
+        // dd($request->all());
+        Member::create(
             [
             "name"=> $request->f_name,
             "age"=> $request->age,
@@ -66,8 +66,8 @@ class MemberController extends Controller
             'updated_at'=>Carbon::now()
             ]
     );
-        // return response()->json(['status'=>'error','error'=>'Hello']);
-        return redirect()->route('members.index')->with('success','Successfully Inserted.');
+        return response()->json(['status'=>'error','error'=>'Hello']);
+        // return redirect()->route('members.index')->with('success','Successfully Inserted.');
     }
 
     /**

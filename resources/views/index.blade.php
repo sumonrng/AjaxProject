@@ -3,8 +3,6 @@
   <head>
     <title>Title</title>
     <!-- Required meta tags -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    @yield('content')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
@@ -19,7 +17,7 @@
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-6 col-md-8 col-sm-9">
               {{-- <form id="formData"> --}}
-              <form action="{{route('members.store')}}" method="POST">
+              <form data-action="{{route('members.store')}}" method="POST" enctype="multipart/form-data" id="add-project-form">
               @csrf
                     <div class="form-group">
                     <label for="f_name">Name</label>
@@ -62,25 +60,25 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
       
-      // $(document).ready(function(){
-      //   var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-      //   var objectResult = $('#formData').serializeArray();
-      //     $('#formData').submit(function(e){
-      //       e.preventDefault();
-      //       alert('Hello');
-      //       $.ajax({
-      //         url:'store',
-      //         type:'POST',
-      //         data:{
-      //          _token: CSRF_TOKEN,
-      //          fields: objectResult
-      //         },
-      //         success:function(res){
-      //           console.log(res);
-      //         }
-      //       });
-      //     });
-      // });
+       $(document).ready(function(){
+        // var form = '#add-project-form';
+           $('#add-project-form').submit(function(event){
+            event.preventDefault();
+             var url = $(this).attr('data-action');
+             $.ajax({
+               url: url,
+               method: 'POST',
+               data: new FormData(this),
+                dataType: 'JSON',
+                contentType: false,
+                cache: false,
+                processData: false,
+               success:function(res){
+                 console.log(res);
+               }
+             });
+           });
+       });
 
     </script>
   </body>
